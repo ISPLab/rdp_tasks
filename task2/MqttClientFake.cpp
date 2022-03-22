@@ -13,8 +13,7 @@ MqttClientFake::~MqttClientFake()
 
 void MqttClientFake::getResult(string id, string task, void (*on_command)(std::string))
 {
-        usleep(10);
-        //ger result from remote client
+         //ger result from remote client
         auto broker = MqttBrokerFake::instance();
         while(!broker->acceptConnection(id)){};
         on_command(id + "a");

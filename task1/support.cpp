@@ -1,33 +1,28 @@
 #include "support.h"
 #include <dirent.h>
 
-
 string support::run_command(int cmd_argc, char **cmd_argv)
 {
-    if( strcmp(cmd_argv[0], "ls") == 0)
+    DIR *dir;
+    struct dirent *ent;
+    if (cmd_argc==1)
+        cmd_argv[1]= (char*)"./";
+    if ((dir = opendir(cmd_argv[1])) != NULL)
     {
-       DIR *dir;
-            struct dirent *ent;
-            if ((dir = opendir("./")) != NULL)
-            {
-                /* print all the files and directories within directory */
-                while ((ent = readdir(dir)) != NULL)
-                {
-                    printf("%s\n", ent->d_name);
-                }
-                closedir(dir);
-                return "done";
-            }
-            else
-            {
-                /* could not open directory */
-                perror("");
-                return "EXIT_FAILURE";
-            }
-    }
-    else return "undefined command";
-}
 
+        while ((ent = readdir(dir)) != NULL)
+        {
+            printf("%s\n", ent->d_name);
+        }
+        closedir(dir);
+        return "";
+    }
+    else
+    {
+        perror("");
+        return "EXIT_FAILURE";
+    }
+}
 
 int support::get_command(char *commandline, char **argv)
 {
@@ -77,10 +72,8 @@ int support::get_command(char *commandline, char **argv)
 
 support::support()
 {
-   
 }
 
 support::~support()
 {
-   
 }

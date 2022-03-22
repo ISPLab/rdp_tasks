@@ -18,45 +18,27 @@ public:
 
 class Robo
 {
-    private :
-
+private:
 public:
     string id;
 
-    std::vector<string> ownners {}; //std::unique_ptr<Interface>
-    MqttClientFake* client;
+    std::vector<string> ownners{}; //std::unique_ptr<Interface>
+    MqttClientFake *client;
     void addOwner(string owner);
- 
+
     void deleteOwner(string name);
     Robo(string owner);
-    /*virtual std::string toString()
+    virtual void longCalculate(string task, void (*callback)(std::string))
     {
-        return "I am an robo";
-    }*/
-    virtual void longCalculate(string task,  void (*callback)(std::string) ) {
-        if(!client)
-           client = new MqttClientFake(callback);
+        if (!client)
+            client = new MqttClientFake(callback);
         client->sendCommand(id, task);
     }
-    virtual ~Robo() {
+    virtual ~Robo()
+    {
         delete client;
     }
- 
 };
-
-//void Robo::calculate() { std::cout << "calculating...;"
-//    << "\n"; };
-/*Robo::Robo(string owner)
-{
-    ownners.push_back(owner);
-}*/
-
-/*void Robo::deleteOwner(string name)
-{
-    ownners.erase(ownners.begin());
-    if (ownners.size() == 0)
-        this->~Robo();
-};*/
 
 class RoboSinger : public Robo
 {
@@ -64,7 +46,7 @@ public:
     void Sing();
     bool canFly;
 
-    RoboSinger(std::string owner) : Robo(owner) // call the super class constructor with its parameter
+    RoboSinger(std::string owner) : Robo(owner)
     {
     }
 };
@@ -73,7 +55,7 @@ class RoboNarrator : public Robo
 {
 public:
     void Tell();
-    RoboNarrator(std::string owner) : Robo(owner) // call the super class constructor with its parameter
+    RoboNarrator(std::string owner) : Robo(owner)
     {
     }
 };
