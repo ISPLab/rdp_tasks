@@ -1,0 +1,3 @@
+/home/tpuser/rdp/task2/build/CMakeFiles/rebuild_cache.dir
+/home/tpuser/rdp/task2/build/CMakeFiles/edit_cache.dir
+/home/tpuser/rdp/task2/build/CMakeFiles/task2.dir

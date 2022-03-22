@@ -1,0 +1,25 @@
+[
+{
+  "directory": "/home/tpuser/rdp/task2/build",
+  "command": "/bin/g++-9     -pthread -ldl -g   -std=gnu++17 -o CMakeFiles/task2.dir/Main.cpp.o -c /home/tpuser/rdp/task2/Main.cpp",
+  "file": "/home/tpuser/rdp/task2/Main.cpp"
+},
+
+{
+  "directory": "/home/tpuser/rdp/task2/build",
+  "command": "/bin/g++-9     -pthread -ldl -g   -std=gnu++17 -o CMakeFiles/task2.dir/Manager.cpp.o -c /home/tpuser/rdp/task2/Manager.cpp",
+  "file": "/home/tpuser/rdp/task2/Manager.cpp"
+},
+
+{
+  "directory": "/home/tpuser/rdp/task2/build",
+  "command": "/bin/g++-9     -pthread -ldl -g   -std=gnu++17 -o CMakeFiles/task2.dir/robo.cpp.o -c /home/tpuser/rdp/task2/robo.cpp",
+  "file": "/home/tpuser/rdp/task2/robo.cpp"
+},
+
+{
+  "directory": "/home/tpuser/rdp/task2/build",
+  "command": "/bin/g++-9     -pthread -ldl -g   -std=gnu++17 -o CMakeFiles/task2.dir/MqttClientFake.cpp.o -c /home/tpuser/rdp/task2/MqttClientFake.cpp",
+  "file": "/home/tpuser/rdp/task2/MqttClientFake.cpp"
+}
+]
