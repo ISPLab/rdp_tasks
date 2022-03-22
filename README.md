@@ -1,11 +1,11 @@
 
 # rdp_tasks
 
-task1 cодержит задание:
+task1 содержит задание:
 Реализовать свою версию утилиты ls (без использования system()) на C
 
 основной код:
-в фале support.cpp
+в файле support.cpp
 
 ![image](https://user-images.githubusercontent.com/8803512/159418192-d57aa63a-78e1-4504-9336-4711aac83b14.png)
 
@@ -28,7 +28,7 @@ RoboNarrator, который умеет рассказывать истории 
 
 серверная часть:
 основной код находится в Manager.cpp,
-содержит орбработку команд по заданию:
+содержит обработку команд по заданию:
   create singer[narrator] name_owner
   add_owner id_device owner_name
   delete_owner id_device owner_name
@@ -49,18 +49,20 @@ RoboNarrator, который умеет рассказывать истории 
                 cout << res << std::endl;
             }
   
-при каждом добвалении устройства проверяется колличество зарегистрированных устройств. checkPlan
-в случае 1'000'000 устройствам отправлятся команда longCalculate на каждое устройсво с асинхронным callback.
+при каждом добавлении устройства проверяется количество зарегистрированных устройств. checkPlan
+в случае 1'000'000 устройствам отправляется команда longCalculate на каждое устройство с асинхронным callback.
  virtual void longCalculate(string task, void (*callback)(std::string))
 клиент устройства создает канал подключения к удаленному устройству (предполагается использование  mqtt (https://mosquitto.org/) или чистого websocet)
-и отправлят команду - 
+и отправляет команду - 
   if (!client)
             client = new MqttClientFake(callback);
         client->sendCommand(id, task);
         
-реальное устройство получив команду проводит вычисление (код клиентской части (MqttClientFake.cpp) точно такойже как на серверной - потому что предпологается подключаеться к одному и тому же брокеру):
-
-клиетская часть:
+реальное устройство получив команду проводит вычисление :
+ * MqttBrokerFake::instance(); - сделан как singleton для иметации одного серверного приложения
+ * код клиентской части (MqttClientFake.cpp) такой же как на серверной - потому что предполагается подключаться к одному и тому же брокеру
+ 
+клиентская часть:
  void MqttClientFake::getResult(string id, string task, void (*on_command)(std::string))
 {
          //ger result from remote client
@@ -79,20 +81,13 @@ bool acceptConnection(string id)
         }
         return false;
     }
- отправлят результат в Manager (на сервер)
+ отправить результат в Manager (на сервер)
  
  * компиляция 
-            сmake проект сделан на Visual studio
+            cmake проект сделан на Visual studio code
             
- * для выполненения теста :
+ * для выполнения теста на создание 1'000'000 устройств: test1000000
             
             
- Задание протестрована Rasperry PI 4, Ubuntu 20.04.3 LTS (GNU/Linux 5.4.0-1042-raspi aarch64)
+ Задание протестировано Rasperry PI 4, Ubuntu 20.04.3 LTS (GNU/Linux 5.4.0-1042-raspi aarch64)
       
-
-
-    
-
-
-
-
